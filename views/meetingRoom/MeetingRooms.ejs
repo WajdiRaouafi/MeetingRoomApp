@@ -1,0 +1,46 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meeting Rooms</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">Meeting Rooms</h1>
+        <a href="/meetingRooms" class="btn btn-primary mb-3">Add Meeting Room</a>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Capacity</th>
+                    <th>Equipment</th>
+                    <th>Availability</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% meetingRooms.forEach(function(room) { %>
+                    <tr>
+                        <td><%= room.name %></td>
+                        <td><%= room.capacity %></td>
+                        <td><%= room.equipment.join(', ') %></td>
+                        <td>
+                            <% room.availability.forEach(function(slot) { %>
+                                <div><%= slot.date %> - <%= slot.timeSlots.join(', ') %></div>
+                            <% }) %>
+                        </td>
+                        <td>
+                            <a href="/meetingRooms/<%= room._id %>/edit" class="btn btn-secondary btn-sm">Edit</a>
+                            <form action="/meetingRooms/<%= room._id %>?_method=DELETE" method="POST" style="display:inline;">
+                                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html> -->
