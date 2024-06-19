@@ -1,0 +1,257 @@
+{
+    "clientName": "Thunder Client",
+    "collectionName": "NodeJS Project",
+    "collectionId": "b1cf646e-a535-4d3d-8651-cecd785fec88",
+    "dateExported": "2024-06-19T19:35:18.205Z",
+    "version": "1.2",
+    "folders": [
+        {
+            "_id": "83fe9c80-7988-4075-a124-939bddcb41d5",
+            "name": "User",
+            "containerId": "",
+            "created": "2024-06-10T17:00:57.935Z",
+            "sortNum": 10000
+        },
+        {
+            "_id": "a54c45b7-9b59-42bf-bc0c-ffd7a05ffc17",
+            "name": "Meeting-Room",
+            "containerId": "",
+            "created": "2024-06-10T17:01:12.677Z",
+            "sortNum": 20000
+        },
+        {
+            "_id": "563dd420-1ac9-4311-ab7d-05f601f3b671",
+            "name": "Reservation",
+            "containerId": "",
+            "created": "2024-06-10T19:02:44.311Z",
+            "sortNum": 30000
+        }
+    ],
+    "requests": [
+        {
+            "_id": "303d902f-f1ee-43c8-b91f-7c5ad5158dce",
+            "colId": "b1cf646e-a535-4d3d-8651-cecd785fec88",
+            "containerId": "83fe9c80-7988-4075-a124-939bddcb41d5",
+            "name": "Register",
+            "url": "http://localhost:9002/auth/register",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2024-06-10T16:59:16.547Z",
+            "modified": "2024-06-19T19:03:10.821Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"username\": \"user3\",\n  \"password\": \"password123\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "9cf10e06-7b21-4d34-ab4f-0b5b6022b1a1",
+            "colId": "b1cf646e-a535-4d3d-8651-cecd785fec88",
+            "containerId": "a54c45b7-9b59-42bf-bc0c-ffd7a05ffc17",
+            "name": "All Meeting Room",
+            "url": "http://localhost:9002/meetingRooms/all",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2024-06-10T17:01:24.958Z",
+            "modified": "2024-06-18T22:32:50.572Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2Njc0YTk3ZDUwY2ZhNWJiZmIxZTBjOSIsImlhdCI6MTcxODEyNzY3NSwiZXhwIjoxNzE4MTMxMjc1fQ.OkFBWvRPODmTJ5iXyR26CJ-XMASOWLvwv9wSF79uM_M"
+            }
+        },
+        {
+            "_id": "39c6b680-e307-4841-b8cd-d154219cd038",
+            "colId": "b1cf646e-a535-4d3d-8651-cecd785fec88",
+            "containerId": "563dd420-1ac9-4311-ab7d-05f601f3b671",
+            "name": "All Reservation",
+            "url": "http://localhost:9002/reservations/all",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2024-06-10T19:02:49.667Z",
+            "modified": "2024-06-19T19:14:32.819Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ]
+        },
+        {
+            "_id": "ce581533-b163-4c28-ac12-7a6d2d2a2fbb",
+            "colId": "b1cf646e-a535-4d3d-8651-cecd785fec88",
+            "containerId": "83fe9c80-7988-4075-a124-939bddcb41d5",
+            "name": "Login",
+            "url": "http://localhost:9002/auth/login",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2024-06-10T16:59:22.912Z",
+            "modified": "2024-06-18T21:10:48.287Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"username\": \"Wajdi\",\n  \"password\": \"password123\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "4581b4ad-116f-43b2-90d2-bf151a0300f8",
+            "colId": "b1cf646e-a535-4d3d-8651-cecd785fec88",
+            "containerId": "a54c45b7-9b59-42bf-bc0c-ffd7a05ffc17",
+            "name": "Create MeetingRoom",
+            "url": "http://localhost:9002/meetingRooms/create",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2024-06-10T17:02:45.729Z",
+            "modified": "2024-06-19T18:35:10.351Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"Conference fu\",\n  \"capacity\": 68,\n  \"equipment\": [\"Tablej\"]\n}\n",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NjcyZjJjMTEyM2U2NmM3MjRjMmJkMCIsImlhdCI6MTcxODA0MzEzOSwiZXhwIjoxNzE4MDQ2NzM5fQ.TyZg2KK_Fg8Ca168htWuUWxHTdW1gB29nl77DOY2Zoo"
+            }
+        },
+        {
+            "_id": "e83a8a5b-fe51-4b70-88ff-95c213d6dc08",
+            "colId": "b1cf646e-a535-4d3d-8651-cecd785fec88",
+            "containerId": "563dd420-1ac9-4311-ab7d-05f601f3b671",
+            "name": "Create Reservation",
+            "url": "http://localhost:9002/reservations/create",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2024-06-11T08:27:13.201Z",
+            "modified": "2024-06-19T19:17:38.864Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{ \"username\":\"user10\",\n  \"roomName\": \"Conference Room A\",\n  \"date\": \"2023-06-20\",\n  \"timeSlot\": \"12:00-19:00\"\n}\n",
+                "form": []
+            }
+        },
+        {
+            "_id": "2b107788-1c2a-4678-8b3d-bb1332229253",
+            "colId": "b1cf646e-a535-4d3d-8651-cecd785fec88",
+            "containerId": "563dd420-1ac9-4311-ab7d-05f601f3b671",
+            "name": "Delete Reservation",
+            "url": "http://localhost:9002/reservations/66732ed2c09c60e589d5b4cc",
+            "method": "DELETE",
+            "sortNum": 20000,
+            "created": "2024-06-11T09:04:11.730Z",
+            "modified": "2024-06-19T19:23:34.182Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2Njc0YTk3ZDUwY2ZhNWJiZmIxZTBjOSIsImlhdCI6MTcxODA5NDE2MywiZXhwIjoxNzE4MDk3NzYzfQ.DVxopWQfhQbbLNJ-hLvUEDfcPeY51uj0tBdV17QpRIQ"
+            }
+        },
+        {
+            "_id": "bfa07e09-aca0-4a49-baef-00bec4c3ca8e",
+            "colId": "b1cf646e-a535-4d3d-8651-cecd785fec88",
+            "containerId": "a54c45b7-9b59-42bf-bc0c-ffd7a05ffc17",
+            "name": "Update MeetingRoom",
+            "url": "http://localhost:9002/meetingRooms/66720ab7eb82563b78ca2a86",
+            "method": "PUT",
+            "sortNum": 30000,
+            "created": "2024-06-18T22:47:22.365Z",
+            "modified": "2024-06-18T22:49:58.211Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"name\": \"Conference Room A\",\n  \"capacity\": 5,\n  \"equipment\": [\"Table\"]\n}\n",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NjcyZjJjMTEyM2U2NmM3MjRjMmJkMCIsImlhdCI6MTcxODA0MzEzOSwiZXhwIjoxNzE4MDQ2NzM5fQ.TyZg2KK_Fg8Ca168htWuUWxHTdW1gB29nl77DOY2Zoo"
+            }
+        },
+        {
+            "_id": "587d947f-f911-4fc0-b29a-60a04e076cea",
+            "colId": "b1cf646e-a535-4d3d-8651-cecd785fec88",
+            "containerId": "563dd420-1ac9-4311-ab7d-05f601f3b671",
+            "name": "Update Reservation",
+            "url": "http://localhost:9002/reservations/66732ed2c09c60e589d5b4cc",
+            "method": "PUT",
+            "sortNum": 30000,
+            "created": "2024-06-19T19:16:32.816Z",
+            "modified": "2024-06-19T19:18:45.114Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "body": {
+                "type": "json",
+                "raw": "{ \"username\":\"user10\",\n  \"roomName\": \"Conference Room A\",\n  \"date\": \"2020-06-15\",\n  \"timeSlot\": \"12:00-19:00\"\n}\n",
+                "form": []
+            },
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NjcyZjJjMTEyM2U2NmM3MjRjMmJkMCIsImlhdCI6MTcxODA0MzEzOSwiZXhwIjoxNzE4MDQ2NzM5fQ.TyZg2KK_Fg8Ca168htWuUWxHTdW1gB29nl77DOY2Zoo"
+            }
+        },
+        {
+            "_id": "fb522afc-94d1-41a9-ab79-4db014650ae2",
+            "colId": "b1cf646e-a535-4d3d-8651-cecd785fec88",
+            "containerId": "a54c45b7-9b59-42bf-bc0c-ffd7a05ffc17",
+            "name": "Delate MeetingRoom",
+            "url": "http://localhost:9002/meetingRooms/66720f5a8519757afa050ec3",
+            "method": "DELETE",
+            "sortNum": 40000,
+            "created": "2024-06-18T22:51:36.966Z",
+            "modified": "2024-06-18T22:52:08.426Z",
+            "headers": [
+                {
+                    "name": "Content-Type",
+                    "value": "application/json"
+                }
+            ],
+            "auth": {
+                "type": "bearer",
+                "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2NjcyZjJjMTEyM2U2NmM3MjRjMmJkMCIsImlhdCI6MTcxODA0MzEzOSwiZXhwIjoxNzE4MDQ2NzM5fQ.TyZg2KK_Fg8Ca168htWuUWxHTdW1gB29nl77DOY2Zoo"
+            }
+        }
+    ],
+    "ref": "Xw2gzH6Wover6P7CaVONhPYjUTgdUP8LwVB6EZWUVI9L91b26dHGzGEq_-4vakG22DrprXTpA45zUpu7XOqukw"
+}
