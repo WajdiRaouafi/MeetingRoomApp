@@ -1,13 +1,14 @@
 const express = require('express');
 const mongoose = require('mongoose'); 
 const session = require('express-session');
-// const methodOverride = require('method-override');
+const bodyParser = require('body-parser');
+const methodOverride = require('method-override');
 const app = express(); // creation instance from express 
 const auth = require('./routes/auth');
 
-//middleware for parsing body data to json responses
+// Middleware for parsing body data to JSON
 app.use(express.json());
-
+app.use(express.urlencoded({ extended: true }));
 
 // Middleware for managing sessions
 app.use(session({
@@ -16,12 +17,12 @@ app.use(session({
     saveUninitialized: true,
 }));
 
-// Middleware for parsing body data to JSON
-app.use(express.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static('public'));
 
 // Middleware for overriding HTTP methods (for PUT and DELETE in forms)
-// app.use(methodOverride('_method'));
-
+app.use(methodOverride('_method'));
 
 // Set EJS as templating engine
 app.set('view engine', 'ejs');
@@ -30,10 +31,9 @@ app.set('views', './views');
 // Routes
 const meetingRoomController = require('./controllers/meetingRoomController');
 const reservationController = require('./controllers/reservationController');
-app.use('/auth',auth)
+app.use('/auth', auth);
 app.use('/meetingRooms', meetingRoomController);
 app.use('/reservations', reservationController);
-
 
 // Home route
 app.get('/home', (req, res) => {
@@ -41,32 +41,20 @@ app.get('/home', (req, res) => {
     res.render('home', { isAuthenticated: !!token });
 });
 
-// app.get("/home", (req, res) => res.render("home"))
-app.get("/register", (req, res) => res.render("register"))
-app.get("/login", (req, res) => res.render("login"))
+app.get("/register", (req, res) => res.render("register"));
+app.get("/login", (req, res) => res.render("login"));
 
-
-// test server web
+// Test server web
 app.get('/hello', (req, res) => {
     res.send('welcome to the world');
-})
+});
 
-
-
-
-// link to DB "user" 
-mongoose.connect('mongodb+srv://wajdiraouafi:WAJdi112233@cluster0.knp1peb.mongodb.net/MeetingRoomApp').
-then(()=> app.listen(9002,()=>{
-     console.log('server listening successfully')
-}));
-
-// mongoose.connect('mongodb+srv://wajdiraouafi:WAJdi112233@cluster0.knp1peb.mongodb.net/MeetingRoomApp', {
-//     useNewUrlParser: true,
-//     useUnifiedTopology: true,
-// }).then(() => {
-//     app.listen(9002, () => {
-//         console.log('Server listening successfully on port 9002');
-//     });
-// }).catch((error) => {
-//     console.error('Database connection error:', error);
-// });
+// MongoDB connection
+mongoose.connect('mongodb+srv://wajdiraouafi:WAJdi112233@cluster0.knp1peb.mongodb.net/MeetingRoomApp')
+.then(() => {
+    app.listen(9002, () => {
+        console.log('Server listening successfully on port 9002');
+    });
+}).catch((error) => {
+    console.error('Database connection error:', error);
+});

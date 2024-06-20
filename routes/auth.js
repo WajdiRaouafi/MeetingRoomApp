@@ -20,25 +20,27 @@ router.post('/register', async(req, res)=> {
 // Login route
 router.post('/login', async (req, res) => {
     try {
-      const { username, password } = req.body;
-  
-      const user = await User.findOne({ username: username });
-      if (!user) {
-        return res.render('login', { message: 'User not found' });
-      }
-  
-      const isPasswordMatch = await bcrypt.compare(password, user.password);
-      if (!isPasswordMatch) {
-        return res.render('login', { message: 'Invalid password' });
-      }
-  
-      const token = jwt.sign({ _id: user._id }, "wajdi"); // Replace with your secret key
-      req.session.token = token;
-      res.redirect('/home');
+        const { username, password } = req.body;
+
+        const user = await User.findOne({ username: username });
+        if (!user) {
+            return res.render('login', { message: 'User not found' }); // Pass message for user not found
+        }
+
+        const isPasswordMatch = await bcrypt.compare(password, user.password);
+        if (!isPasswordMatch) {
+            return res.render('login', { message: 'Invalid password' }); // Pass message for invalid password
+        }
+
+        const token = jwt.sign({ _id: user._id }, "wajdi"); // Replace with your secret key
+        req.session.token = token;
+        res.redirect('/home');
     } catch (err) {
-      res.status(400).send(err.message);
+        res.status(400).send(err.message);
     }
-  });
+});
+
+
 
 // Logout
 router.get('/logout', (req, res) => {
