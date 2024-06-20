@@ -1,9 +1,10 @@
 const express = require('express');
 const MeetingRoom = require('../model/meetingroom');
+const authMiddleware = require('../authMiddleware') // Import your verifyToken middleware
 const router = express.Router();
 
 // Create a new meeting room
-router.post('/create', async (req, res) => {
+router.post('/create',authMiddleware, async (req, res) => {
     try {
         const { name, capacity, equipment, availability } = req.body;
         
@@ -27,7 +28,7 @@ router.post('/create', async (req, res) => {
 });
 
 // Get all meeting rooms
-router.get('/all', async (req, res) => {
+router.get('/all',authMiddleware, async (req, res) => {
     try {
         const meetingRooms = await MeetingRoom.find();
         res.status(200).send(meetingRooms);
@@ -37,7 +38,7 @@ router.get('/all', async (req, res) => {
 });
 
 // Get a meeting room by ID
-router.get('/:id', async (req, res) => {
+router.get('/:id',authMiddleware, async (req, res) => {
     try {
         const meetingRoom = await MeetingRoom.findById(req.params.id);
         if (!meetingRoom) {
@@ -50,7 +51,7 @@ router.get('/:id', async (req, res) => {
 });
 
 // Update a meeting room by ID
-router.put('/:id', async (req, res) => {
+router.put('/:id',authMiddleware, async (req, res) => {
     try {
         const updates = req.body;
         const meetingRoom = await MeetingRoom.findByIdAndUpdate(req.params.id, updates, { new: true });
@@ -64,7 +65,7 @@ router.put('/:id', async (req, res) => {
 });
 
 // Delete a meeting room by ID
-router.delete('/:id', async (req, res) => {
+router.delete('/:id',authMiddleware, async (req, res) => {
     try {
         const meetingRoom = await MeetingRoom.findByIdAndDelete(req.params.id);
         if (!meetingRoom) {

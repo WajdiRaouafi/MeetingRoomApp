@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
-
+const authMiddleware = require('../authMiddleware') // Import your verifyToken middleware
 const MeetingRoom = require('../model/meetingroom');
 const Reservation = require('../model/reservation');
 const User = require('../model/user');
@@ -9,7 +9,7 @@ const User = require('../model/user');
 
 
 
-router.post('/create', async (req, res) => {
+router.post('/create',authMiddleware, async (req, res) => {
     try {
         const { username, roomName, date, timeSlot } = req.body;
 
@@ -61,7 +61,7 @@ router.post('/create', async (req, res) => {
 });
 
 
-router.get('/all', async (req, res) => {
+router.get('/all',authMiddleware, async (req, res) => {
     try {
         const reservations = await Reservation.find()
             .populate('user', 'username')
@@ -73,7 +73,7 @@ router.get('/all', async (req, res) => {
     }
 });
 
-router.put('/:id', async (req, res) => {
+router.put('/:id',authMiddleware, async (req, res) => {
     try {
         const { username, roomName, date, timeSlot } = req.body;
 
@@ -120,7 +120,7 @@ router.put('/:id', async (req, res) => {
     }
 });
 
-router.delete('/:id', async (req, res) => {
+router.delete('/:id',authMiddleware, async (req, res) => {
     try {
         const reservation = await Reservation.findByIdAndDelete(req.params.id);
         if (!reservation) {
