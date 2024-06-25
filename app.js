@@ -26,7 +26,9 @@ app.use(methodOverride('_method'));
 
 // Set EJS as templating engine
 app.set('view engine', 'ejs');
+// app.set('views', './views/meetingRoom');
 app.set('views', './views');
+
 
 // Routes
 const meetingRoomController = require('./controllers/meetingRoomController');

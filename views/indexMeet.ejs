@@ -19,7 +19,6 @@
                     <th>Name</th>
                     <th>Capacity</th>
                     <th>Equipment</th>
-                    <th>Availability</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -29,11 +28,6 @@
                         <td><%= room.name %></td>
                         <td><%= room.capacity %></td>
                         <td><%= room.equipment.join(', ') %></td>
-                        <td>
-                            <% room.availability.forEach(function(slot) { %>
-                                <p><%= slot.date %>: <%= slot.timeSlots.join(', ') %></p>
-                            <% }) %>
-                        </td>
                         <td>
                             <a href="/meetingRooms/edit/<%= room._id %>" class="btn btn-primary">Edit</a>
                             <form action="/meetingRooms/<%= room._id %>?_method=DELETE" method="POST" style="display:inline;">
