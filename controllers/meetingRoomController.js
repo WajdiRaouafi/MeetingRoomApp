@@ -1,15 +1,14 @@
 const express = require('express');
-const MeetingRoom = require('../model/meetingroom');
 const router = express.Router();
-
-
+const authMiddleware = require('../authMiddleware') // Import your verifyToken middleware
+const MeetingRoom = require('../model/meetingroom');
 
 // Render form to create a new meeting room
-router.get('/new', (req, res) => {
+router.get('/new',authMiddleware, (req, res) => {
     res.render('newMeet', { title: 'Add New Meeting Room' });
 });
 
-router.post('/create', async (req, res) => {
+router.post('/create',authMiddleware, async (req, res) => {
     try {
         // const { name, capacity, equipment, availability } = req.body;
         const { name, capacity, equipment } = req.body;
@@ -38,7 +37,7 @@ router.post('/create', async (req, res) => {
 });
 
 // Get all meeting rooms
-router.get('/all', async (req, res) => {
+router.get('/all',authMiddleware, async (req, res) => {
     try {
         const meetingRooms = await MeetingRoom.find();
         res.render('indexMeet', { title: 'Meeting Rooms', meetingRooms });
@@ -49,7 +48,7 @@ router.get('/all', async (req, res) => {
 
 
 // Route to handle editing a meeting room
-router.post('/edit/:id', async (req, res) => {
+router.post('/edit/:id',authMiddleware, async (req, res) => {
     try {
       const meetingRoomId = req.params.id;
       const updatedName = req.body.name;
@@ -85,7 +84,7 @@ router.post('/edit/:id', async (req, res) => {
   
 
 // Render form to edit a meeting room
-router.get('/edit/:id', async (req, res) => {
+router.get('/edit/:id',authMiddleware, async (req, res) => {
     try {
         const meetingRoom = await MeetingRoom.findById(req.params.id);
         if (!meetingRoom) {
@@ -97,7 +96,7 @@ router.get('/edit/:id', async (req, res) => {
     }
 });
 // Delete a meeting room by ID
-router.delete('/:id', async (req, res) => {
+router.delete('/:id',authMiddleware, async (req, res) => {
     try {
         const meetingRoom = await MeetingRoom.findByIdAndDelete(req.params.id);
         if (!meetingRoom) {

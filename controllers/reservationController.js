@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
+const authMiddleware = require('../authMiddleware') // Import your verifyToken middleware
 
 const MeetingRoom = require('../model/meetingroom');
 const Reservation = require('../model/reservation');
@@ -8,7 +9,7 @@ const User = require('../model/user');
 
 
 
-router.get('/new', async (req, res) => {
+router.get('/new',authMiddleware, async (req, res) => {
     try {
       const users = await User.find(); // Fetch all users
       const meetingRooms = await MeetingRoom.find(); // Fetch all meeting rooms (optional)
@@ -21,7 +22,7 @@ router.get('/new', async (req, res) => {
   });
 
 
-router.post('/create', async (req, res) => {
+router.post('/create',authMiddleware, async (req, res) => {
     try {
       const { title,userId, roomId, startDate, startTime, endTime } = req.body;
   
@@ -64,7 +65,7 @@ router.post('/create', async (req, res) => {
 
   // Get all reservations
 
-router.get('/all', async (req, res) => {
+router.get('/all',authMiddleware, async (req, res) => {
     try {
       const reservations = await Reservation.find()
         .populate('user', 'username')
@@ -77,7 +78,7 @@ router.get('/all', async (req, res) => {
 
 
 // GET route to render the edit form
-router.get('/edit/:id', async (req, res) => {
+router.get('/edit/:id',authMiddleware ,async (req, res) => {
     try {
       const reservation = await Reservation.findById(req.params.id)
         .populate('user', 'username') // Populate user details
@@ -111,7 +112,7 @@ router.get('/edit/:id', async (req, res) => {
   });
   
 
-router.post('/edit/:id', async (req, res) => {
+router.post('/edit/:id',authMiddleware, async (req, res) => {
     try {
         const { title, userId, meetingRoomId, startDate, startTime, endTime } = req.body;
         const reservationId = req.params.id;
@@ -164,7 +165,7 @@ router.post('/edit/:id', async (req, res) => {
     }
 });
 
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', authMiddleware ,async (req, res) => {
     try {
         const reservation = await Reservation.findByIdAndDelete(req.params.id);
         if (!reservation) {
