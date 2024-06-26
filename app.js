@@ -37,6 +37,8 @@ app.use('/auth', auth);
 app.use('/meetingRooms', meetingRoomController);
 app.use('/reservations', reservationController);
 
+app.get("/", (req, res) => res.render("login"));
+
 // Home route
 app.get('/home', (req, res) => {
     const token = req.session.token;

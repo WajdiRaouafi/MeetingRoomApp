@@ -6,12 +6,52 @@
     <title>Home</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
+
 <body>
-    <div class="container">
+
+    <div class="container text-center">
         <h1 class="mt-5">Welcome to the Meeting Room App</h1>
-        <a href="/register" class="btn btn-primary mt-3">Register</a>
-        <a href="/login" class="btn btn-secondary mt-3">Login</a>
-        <a href="/auth/logout" class="btn btn-danger mt-3">Logout</a>
+        <div class="row justify-content-center mt-4">
+            <div class="col-md-4">
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">Meeting Room</h5>
+                        <p class="card-text">
+                            Create a meeting room with its name, capacity, and list of existing equipment, or update existing information. <br> 
+                            PS: Do not add a new meeting room that already exists.
+                        </p>
+                    </div>
+                    <div class="card-body">
+                        <a href="meetingRooms/new" class="card-link">Create</a>
+                        <a href="meetingRooms/all" class="card-link">Show All</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title">Reservation</h5>
+                        <p class="card-text">
+                            Create a reservation for a meeting room based on the meeting room name and the responsible, or update existing information. <br> 
+                            PS: Do not add a new reservation that already exists in the same time slot.
+                        </p>
+                    </div>
+                    <div class="card-body">
+                        <a href="reservations/new" class="card-link">Create</a>
+                        <a href="reservations/all" class="card-link">Show All</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mt-4">
+            <a href="/register" class="btn btn-primary mr-2">Register</a>
+            <a href="/login" class="btn btn-secondary mr-2">Login</a>
+            <a href="/auth/logout" class="btn btn-danger">Logout</a>
+        </div>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

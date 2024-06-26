@@ -76,10 +76,6 @@ router.get('/all', async (req, res) => {
 });
 
 
-
-
-
-// GET route to render the edit form
 // GET route to render the edit form
 router.get('/edit/:id', async (req, res) => {
     try {
